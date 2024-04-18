@@ -63,5 +63,12 @@ print(table)
 
 Race 1 seems to be to be eating out more than race two eats out and about the same amount as race three. 
 
+## infrential results
+### Chi-squared test results
+```{r}
+chisq.test(table)
+chisq.testGC(table)
+```
+We can observeed that there seems to be no relationship in the chi-squared test.
 
 
