@@ -31,6 +31,19 @@ $H_0$ There is no difference among the various races with frequency of eating ou
 
 $H_A$ There is a statistical difference between at least two races with the frequency of eating out  
 
+```{r include=FALSE,echo=FALSE}
+source(file="fisherXY.R")
+require(tidyverse)
+require(tigerstats)
+require(knitr)
+#require(haven)
+GSS=read.csv('GSS1996 (1).csv')
+GSS$race = factor(GSS$race,level=c('black', 'white', 'other'))
+GSS$eatout = factor(GSS$eatout, levels=c('yes','no')) 
+```
+
+#Methods
+"Race" and "eat out" are categorical. Therefore we use the Cat ~ Cat helper file. 
 
 
 
