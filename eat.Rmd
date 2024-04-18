@@ -9,9 +9,10 @@ output:
 date: "3/29/24"    
     
 ---
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+```
+
 ```
 
 ## There were two years in which the General Social Survey asked about the frequency of eating out. The variable name you are looking for is "eatout".
@@ -31,7 +32,7 @@ $H_0$ There is no difference among the various races with frequency of eating ou
 
 $H_A$ There is a statistical difference between at least two races with the frequency of eating out  
 
-```{r include=FALSE,echo=FALSE}
+```{r include=TRUE,echo=FALSE}
 source(file="fisherXY.R")
 require(tidyverse)
 require(tigerstats)
@@ -42,7 +43,9 @@ GSS$race = factor(GSS$race,level=c('black', 'white', 'other'))
 GSS$eatout = factor(GSS$eatout, levels=c('yes','no')) 
 ```
 
-#Methods
+
+##Methods
+
 "Race" and "eat out" are categorical. Therefore we use the Cat ~ Cat helper file. 
 
 #Descriptive Result
@@ -56,6 +59,7 @@ X axis is eat out (1=yes, 2=no) labels on the columns are (1=black,2=white,3=oth
 White group, they do not eat out.
 
 #Numerical description
+
 ```{r}
 table= xtabs(~eatout+race, data=GSS)
 print(table)
@@ -65,10 +69,23 @@ Race 1 seems to be to be eating out more than race two eats out and about the sa
 
 ## infrential results
 ### Chi-squared test results
+
 ```{r}
 chisq.test(table)
 chisq.testGC(table)
 ```
 We can observeed that there seems to be no relationship in the chi-squared test.
+### fisherXY test results
 
+```{r}
+fisher.test(table)
+fisherXY(GSS$eatout,GSS$race, printAll=T)
+```
+
+There is not difference among the varies races with regards eating out.
+
+
+```
+
+## Summary and Conclusions
 
