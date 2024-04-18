@@ -45,5 +45,23 @@ GSS$eatout = factor(GSS$eatout, levels=c('yes','no'))
 #Methods
 "Race" and "eat out" are categorical. Therefore we use the Cat ~ Cat helper file. 
 
+#Descriptive Result
+
+```{r}
+barchartGC(~eatout + race,data=GSS)
+barchartGC(~eatout + race,data=GSS, type="percent")
+```
+
+X axis is eat out (1=yes, 2=no) labels on the columns are (1=black,2=white,3=other)
+White group, they do not eat out.
+
+#Numerical description
+```{r}
+table= xtabs(~eatout+race, data=GSS)
+print(table)
+```
+
+Race 1 seems to be to be eating out more than race two eats out and about the same amount as race three. 
+
 
 
